@@ -1,0 +1,17 @@
+export { default as Login } from './Login';
+export { default as Cetak } from './Cetak/Cetak';
+export { default as Loading } from './Loading';
+export { default as Input } from './Input/Input';
+export { default as Class } from './Class/Class';
+export { default as Activity } from './Activity';
+export { default as Ekstra } from './Ekstra/Ekstra'; 
+export { default as Crumb } from './Crumb/UseCrumb';
+export { default as Student } from './Student/Person';
+export { default as Setting } from './Setting/Setting';
+export { default as Subject } from './Subject/Subject';
+export { default as Teacher } from './Teacher/Teacher';
+export { default as InputNilai } from './Input/InputTab';
+export { default as ListExam } from './ExamGrades/ListExam';
+export { default as Dashboard } from './Dashboard/Dashboard';
+export { default as Competence } from './Competence/Competence';
+export { default as AppContainer } from './Container/AppContainer';
