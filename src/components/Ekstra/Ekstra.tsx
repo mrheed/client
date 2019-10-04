@@ -12,9 +12,9 @@ import { getEkstraData, insertEkstraData, updateEkstraData, deleteEkstraData } f
     },[])
     useEffect(() => {
       if (!isFetching) {
-		  props.ekstra.data.length === 0 && props.getEkstraData()
+		  (props.ekstra.data.length === 0 || props.request.status === "success") && props.getEkstraData()
       }
-    }, [isFetching])
+    }, [isFetching, props.request.status])
     const rowsPerPageArr: number[] = [10, 15, 20];
     const responseData = {
 		status: props.request.status,
@@ -67,7 +67,7 @@ import { getEkstraData, insertEkstraData, updateEkstraData, deleteEkstraData } f
       <>
         <Crumb {...props} />
         <Table 
-          data={[]}
+          data={props.ekstra.data}
           onDelete={
             {
 				todoFunction: props.deleteEkstraData, 
@@ -84,7 +84,7 @@ import { getEkstraData, insertEkstraData, updateEkstraData, deleteEkstraData } f
           }
           rowKey={["Kode Ekstra", "Nama Ekstra", "Pelatih"]}
           insertProps={insertProps}
-          loadingData={false}
+          loadingData={props.ekstra.is_loading}
           primaryKey="kode_ekstra"
           tableTitle="Tabel Ekstrakulikuler"
           withActions

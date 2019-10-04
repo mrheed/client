@@ -73,6 +73,7 @@ const Middleware = ({dispatch, getState}: any) => (next: any) => async (action: 
 		// Ekstra
 		|| action.type === Type.START_READ_EKSTRA_DATA
 		|| action.type === Type.START_UPDATE_EKSTRA_DATA
+		|| action.type === Type.START_INSERT_EKSTRA_DATA
 		|| action.type === Type.START_DELETE_EKSTRA_DATA
         ) 
         && (getState().settings.application.tahun_ajaran !== 0 && getState().settings.application.semester != 0) 

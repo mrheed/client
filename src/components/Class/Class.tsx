@@ -11,9 +11,9 @@ function Teacher(props: any) {
 	}, [])
     useEffect(() => {
 		if (!is_fetching) {
-			props.class.data.length === 0 && props.readClassRecords()
+			(props.class.data.length === 0 || props.request.status === "success")  && props.readClassRecords()
 		}
-	}, [is_fetching]);
+	}, [is_fetching, props.request.status]);
     const rowsPerPageArr: number[] = [6, 12, 18];
     const responseData = {
         status: props.request.status, 
