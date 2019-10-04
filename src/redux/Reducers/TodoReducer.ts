@@ -6,7 +6,7 @@ export const todoRequest = (state: Interface.TodoSetting = {
     status: "",
     message: ""
 }, action: Interface.ActionTypes) => {
-    switch (action.type) {
+	switch (action.type) {
         case Type.START_INSERT_REMEDY_SCORE:
         case Type.START_UPDATE_SETTING_RECORD:
         case Type.START_INSERT_EXAM_SCORE:

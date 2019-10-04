@@ -17,6 +17,9 @@ import { getEkstraData, insertEkstraData, updateEkstraData, deleteEkstraData } f
     }, [isFetching])
     const rowsPerPageArr: number[] = [10, 15, 20];
     const responseData = {
+		status: props.request.status,
+		message: props.request.message,
+		loading: props.request.loading
     }
     const insertProps = {
       insertState: [
@@ -38,6 +41,7 @@ import { getEkstraData, insertEkstraData, updateEkstraData, deleteEkstraData } f
       ],
       onInsert: {
         todoFunction: (data: any) => {
+			props.insertEkstraData(data)
         },
         ...responseData
       },
@@ -66,13 +70,14 @@ import { getEkstraData, insertEkstraData, updateEkstraData, deleteEkstraData } f
           data={[]}
           onDelete={
             {
-              todoFunction: () => {}, 
+				todoFunction: props.deleteEkstraData, 
               ...responseData
             }
           }
           onUpdate={
             {
               todoFunction: (data: any) => {
+				  props.updateEkstraData(data)
               }, 
               ...responseData
             }
@@ -92,7 +97,8 @@ import { getEkstraData, insertEkstraData, updateEkstraData, deleteEkstraData } f
   }
 
   const mapStateToProps = (state: any) => ({
-	  ekstra: state.ekstra
+	  ekstra: state.ekstra,
+	  request: state.todoRequest
   })
 
   const mapDispatchToProps = (dispatch: any) => ({

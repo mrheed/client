@@ -97,8 +97,8 @@ function Teacher(props: any) {
       ],
       onInsert: {
         todoFunction: (data: any) => {
-          const key = Object.keys(data[0]).filter((kys: string) => kys === "mapel" || kys ==="MapelDiampu")[0]
-          const key1 = Object.keys(data[0]).filter((kys: string) => kys === "kelas_diampu" || kys === "KelasDiampu")[0]
+          const key = Object.keys(data[0]).filter((kys: string) => kys === "mapel" || kys ==="mapel_diampu")[0]
+          const key1 = Object.keys(data[0]).filter((kys: string) => kys === "kelas_diampu")[0]
           const drFn = (ky: string, x: any) => {
             return x[ky].split(",").length === 1
             ? x[ky]
@@ -114,15 +114,15 @@ function Teacher(props: any) {
               }
             )
           }
-          const newData = key === "MapelDiampu" && data.map((x: any) => {
-            const mapelDariUser = key === "MapelDiampu" && drFn(key, x)
-            const kelasDiampu = key1 === "KelasDiampu" ? drFn(key1, x) : x[key1]
+          const newData = key === "mapel_diampu" && data.map((x: any) => {
+            const mapelDariUser = key === "mapel_diampu" && drFn(key, x)
+            const kelasDiampu = typeof key1 === "object" ? drFn(key1, x) : x[key1]
 			  console.log(kelasDiampu)
               return ({
-                Nama: x["Nama"],
-                JenisKelamin: x["JenisKelamin"],
-                NIP: parseInt(x["NIP"]),
-                kelas_diampu: x["KelasDiampu"] ? (!Array.isArray(kelasDiampu) ? [kelasDiampu] : kelasDiampu).map((km: string) => {
+                Nama: x["nama"],
+                JenisKelamin: x["jenis_kelamin"],
+                NIP: parseInt(x["n_i_p"]),
+                kelas_diampu: x["kelas_diampu"] ? (!Array.isArray(kelasDiampu) ? [kelasDiampu] : kelasDiampu).map((km: string) => {
                   var sK = km.split(" ")[1]
                   var kK = km.split(" ")[0]
                   return props.class_data.data
@@ -138,7 +138,7 @@ function Teacher(props: any) {
 			data = data.map((x: any) => {
 				return ({...x, "nip": parseInt(x["nip"])})
 			})
-          props.insertTeacherRecords(key === "MapelDiampu" ? newData : data)
+          props.insertTeacherRecords(key === "mapel_diampu" ? newData : data)
         },
         ...responseData
       },

@@ -130,7 +130,8 @@ const EnhancedTableToolbar = (props: EnhancedTableToolbarProps) => {
           var obj: any = {}
           // Manipulate the object keys
           Object.keys(x).map((z: string) => {
-            Object.assign(obj, {[z.split(" ").join("") as string] : x[z]})
+			  var c: string = z !== "NIS" ? z.split(" ").join("").split(/(?=[A-Z])/).join("_") : z
+            Object.assign(obj, {[c.toLowerCase() as string] : x[z]})
           })
           // return the manipulated object
           return obj 

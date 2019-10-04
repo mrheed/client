@@ -1,11 +1,19 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import { Crumb } from '..'
 import Table from '../Table/CreateTable';
 import * as Action from '../../redux/ActionCreator';
 
-function Teacher(props: any) {
-    useEffect(() => {(props.class.data.length === 0 || props.request.status === "success") && (props.readClassRecords())}, [props.request]);
+function Teacher(props: any) {	
+	const [is_fetching, set_fetching] = useState<boolean>(true)
+	useEffect(() => {
+		set_fetching(false)
+	}, [])
+    useEffect(() => {
+		if (!is_fetching) {
+			props.class.data.length === 0 && props.readClassRecords()
+		}
+	}, [is_fetching]);
     const rowsPerPageArr: number[] = [6, 12, 18];
     const responseData = {
         status: props.request.status, 

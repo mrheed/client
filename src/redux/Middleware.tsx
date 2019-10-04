@@ -94,7 +94,9 @@ const APIMiddleware = (
             data: datas!,
             headers: {"Authorization": "Bearer " + SelectCookie("token")[0], ...header!},
             ...config!
-        }).then(({data}: AxiosResponse) => dispatch({type: type.success, payload: data}))
+        }).then(({data}: AxiosResponse) => {
+			dispatch({type: type.success, payload: data})
+		})
         .then(() => dispatch({type: Type.RESET_REQUEST_STATE}))
         .catch(({response}: any) => dispatch({type: type.error, payload: response}))
     }

@@ -77,15 +77,19 @@ import { readGradesList, getGradesWithCurrentSchoolYear } from '../../redux/Acti
       ],
       onInsert: {
         todoFunction: (data: any) => {
-          const newData = data.map((x: any) => ({
+          const newData = data.map((x: any) => {
+			  console.log(props.class.data)
+			return ({
             ...x,
             tahun_masuk: typeof x["jurusan"] === "object" 
             ? props.class_on_school_year.school_year_on_grade[x.kelas.value] || 0
-            : x["TahunMasuk"],
+            : x["tahun_masuk"],
             jurusan: props.class.data
-              .filter((z: any) => z.kode_kelas === (typeof x["jurusan"] === "object" ? x.jurusan.value : x["Jurusan"]))
+              .filter((z: any) => z.kode_kelas === (typeof x["jurusan"] === "object" ? x.jurusan.value : x["jurusan"]))
               .map((y: any) => ({value: y.kode_kelas, label: y.nama_kelas}))[0]
-          }))
+          	})
+		  	}
+		  )
           props.insertStudentRecords(newData)
         },
         ...responseData
