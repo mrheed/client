@@ -27,7 +27,7 @@
     "@types/react-transition-group": "^2.9.2",
     "@types/recharts": "^1.1.17",
     "@types/styled-components": "^4.1.18",
-    "axios": "^0.19.0",
+    "axios": "^0.21.1",
     "clsx": "^1.0.4",
     "file-saver": "^2.0.2",
     "gh-pages": "^2.0.1",
